@@ -9,8 +9,9 @@ public class Main {
 		Airplane[]      airplanes      = new Airplane[5];
 		Flight[]        flights        = new Flight[5];
 		
-		int    opt = 0;
-		String name, country, license;
+		int    passengers, opt = 0;
+		double tankCapacity;
+		String name, country, license, brand, model;
 		
 		Main.fillAirControllers(airControllers);
 		Main.fillAirlines(airlines);
@@ -119,22 +120,31 @@ public class Main {
 								                 "Elige una opción: ");
 								switch (opt = sn.nextInt()) {
 									case 1:
-										System.out.print("Introduce  de la aerolínea que quieres cambiar: ");
-										name = sc.nextLine();
-										if (Main.checkAirline(airlines, name) != -1) {
-											System.out.print("Introduce nuevo nombre: ");
-											name = sc.nextLine();
-											airlines[Main.checkAirline(airlines, name)].setName(name);
+										if (Main.checkAirplane(airplanes, license) != -1) {
+											System.out.print("Introduce nueva marca: ");
+											brand = sc.nextLine();
+											airplanes[Main.checkAirplane(airplanes, license)].setBrand(brand);
 										}
 										break;
 									case 2:
-										System.out.print(
-												"Introduce el país de orígen de la aerolínea que quieres cambiar: ");
-										name = sc.nextLine();
-										if (Main.checkAirline(airlines, name) != -1) {
-											System.out.print("Introduce nuevo país: ");
-											country = sc.nextLine();
-											airlines[Main.checkAirline(airlines, name)].setCountry(country);
+										if (Main.checkAirplane(airplanes, license) != -1) {
+											System.out.print("Introduce nuevo modelo: ");
+											model = sc.nextLine();
+											airplanes[Main.checkAirplane(airplanes, license)].setModel(model);
+										}
+										break;
+									case 3:
+										if (Main.checkAirplane(airplanes, license) != -1) {
+											System.out.print("Introduce nueva capacidad depósito: ");
+											tankCapacity = sn.nextDouble();
+											airplanes[Main.checkAirplane(airplanes, license)].setTankCapacity(tankCapacity);
+										}
+										break;
+									case 4:
+										if (Main.checkAirplane(airplanes, license) != -1) {
+											System.out.print("Introduce nuevo modelo: ");
+											model = sc.nextLine();
+											airplanes[Main.checkAirplane(airplanes, license)].setModel(model);
 										}
 										break;
 									default:
